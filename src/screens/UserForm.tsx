@@ -8,8 +8,11 @@ import {
   View,
   Pressable,
 } from "react-native";
+import useUserStore from "../store/user";
 
 export default function UserForm() {
+  const addUser = useUserStore((state) => state.addUser);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -25,7 +28,19 @@ export default function UserForm() {
   };
 
   const onSubmit = () => {
-    console.log({ form });
+    const { name, email } = form;
+
+    addUser({
+      name,
+      email,
+    });
+
+    alert("User created successfully!");
+
+    setForm({
+      name: "",
+      email: "",
+    });
   };
 
   return (
@@ -37,6 +52,7 @@ export default function UserForm() {
           placeholder="Nome"
           onChangeText={(text) => handleChangeText("name", text)}
           autoCapitalize="none"
+          autoFocus
         />
         <TextInput
           style={styles.input}
