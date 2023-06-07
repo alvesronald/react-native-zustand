@@ -2,9 +2,9 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import useUserStore from "../store/user";
 
 const renderItem = ({ item }) => (
-  <View style={styles.userListContainer}>
-    <Text style={styles.text}>Name: {item.name}</Text>
-    <Text style={styles.text}>E-mail: {item.email}</Text>
+  <View style={styles.userInfoContainer}>
+    <Text style={styles.userInfo}>Name: {item.name}</Text>
+    <Text style={styles.userInfo}>E-mail: {item.email}</Text>
   </View>
 );
 
@@ -29,11 +29,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     justifyContent: "center",
   },
-  text: {
+  userInfo: {
     fontSize: 18,
     color: "white",
   },
-  userListContainer: {
+  userInfoContainer: {
     marginTop: 20,
     backgroundColor: "#0065FE",
     gap: 10,
